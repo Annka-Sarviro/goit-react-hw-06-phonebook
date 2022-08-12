@@ -4,6 +4,8 @@ import { Label, Button, ErrorText } from './Form.styled';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
+import { addContact, getContacts } from 'redux/phoneSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const FormError = ({ name }) => {
   return (
@@ -24,12 +26,22 @@ const initialValues = {
   number: '',
 };
 
-const FormSubmit = ({ onSubmitForm }) => {
+const FormSubmit = () => {
   const nameInputId = nanoid();
   const numberInputId = nanoid();
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const handleSubmit = (values, { resetForm }) => {
-    onSubmitForm(values);
+    // if (
+    //   contacts.find(
+    //     contact => contact.name.toLowerCase() === values.name.toLowerCase()
+    //   )
+    // ) {
+    //   return alert(`${values.name} is already in contacts`);
+    // }
+
+    dispatch(addContact(values));
     resetForm();
   };
   return (
