@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { Label, Input } from '../Form/Form.styled';
 import PropTypes from 'prop-types';
 import { filterName } from 'redux/phoneSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Filter = () => {
   const dispatch = useDispatch();

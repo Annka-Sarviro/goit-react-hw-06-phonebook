@@ -33,14 +33,15 @@ const FormSubmit = () => {
   const contacts = useSelector(getContacts);
 
   const handleSubmit = (values, { resetForm }) => {
-    // if (
-    //   contacts.find(
-    //     contact => contact.name.toLowerCase() === values.name.toLowerCase()
-    //   )
-    // ) {
-    //   return alert(`${values.name} is already in contacts`);
-    // }
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === values.name.toLowerCase()
+      )
+    ) {
+      return alert(`${values.name} is already in contacts`);
+    }
 
+    values['id'] = numberInputId;
     dispatch(addContact(values));
     resetForm();
   };

@@ -15,7 +15,9 @@ const phoneSlice = createSlice({
     },
 
     deleteContact(state, action) {
-      state.items.filter(contact => contact.id !== action.payload);
+      state.items = state.items.filter(
+        contact => contact.id !== action.payload
+      );
     },
 
     filterName(state, action) {
@@ -25,7 +27,7 @@ const phoneSlice = createSlice({
 });
 
 const persistConfig = {
-  key: 'contacts',
+  key: 'root',
   storage,
 };
 
@@ -38,3 +40,12 @@ export const { addContact, deleteContact, filterName } = phoneSlice.actions;
 
 export const getContacts = state => state.contacts.items;
 export const getFilterValue = state => state.contacts.filter;
+
+// export const useFiltredContscts
+// const filtrContacts = contacts => {
+//   const filter = useSelector(getFilterValue)
+//   const normalizeFiltr = filter.toLowerCase();
+//   return contacts.filter(contact =>
+//     contact.name.toLowerCase().includes(normalizeFiltr)
+//   );
+// };
