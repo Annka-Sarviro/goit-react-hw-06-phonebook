@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { useSelector} from 'react-redux';
 import { persistReducer } from 'redux-persist';
-
 import storage from 'redux-persist/lib/storage';
 
 const phoneSlice = createSlice({
@@ -27,7 +27,7 @@ const phoneSlice = createSlice({
 });
 
 const persistConfig = {
-  key: 'root',
+  key: 'contact',
   storage,
 };
 
@@ -37,15 +37,14 @@ export const contactsReducer = persistReducer(
 );
 
 export const { addContact, deleteContact, filterName } = phoneSlice.actions;
-
 export const getContacts = state => state.contacts.items;
 export const getFilterValue = state => state.contacts.filter;
 
-// export const useFiltredContscts
-// const filtrContacts = contacts => {
-//   const filter = useSelector(getFilterValue)
-//   const normalizeFiltr = filter.toLowerCase();
-//   return contacts.filter(contact =>
-//     contact.name.toLowerCase().includes(normalizeFiltr)
-//   );
-// };
+export const useFiltredContscts = () => {
+  const filter = useSelector(getFilterValue);
+  const contacts = useSelector(getContacts)
+  const normalizeFiltr = filter.toLowerCase();
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizeFiltr)
+  );
+}

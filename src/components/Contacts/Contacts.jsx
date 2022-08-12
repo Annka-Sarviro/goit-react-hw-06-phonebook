@@ -1,13 +1,12 @@
 import React from 'react';
 import { Contact, Name, Tel, Button } from './Contacts.styled';
 import PropTypes from 'prop-types';
-import { getContacts, getFilterValue, deleteContact } from 'redux/phoneSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact , useFiltredContscts} from 'redux/phoneSlice';
+import {  useDispatch } from 'react-redux';
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const filteredContacts = filtrContacts(contacts);
+  const filteredContacts = useFiltredContscts();
 
   return (
     <ul>

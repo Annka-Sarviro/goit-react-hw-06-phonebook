@@ -1,11 +1,11 @@
 import React from 'react';
+import { addContact, getContacts } from 'redux/phoneSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { Label, Button, ErrorText } from './Form.styled';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import { addContact, getContacts } from 'redux/phoneSlice';
-import { useSelector, useDispatch } from 'react-redux';
 
 const FormError = ({ name }) => {
   return (
