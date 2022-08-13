@@ -1,6 +1,5 @@
 import React from 'react';
 import { Contact, Name, Tel, Button } from './Contacts.styled';
-import PropTypes from 'prop-types';
 import { deleteContact , useFiltredContscts} from 'redux/phoneSlice';
 import {  useDispatch } from 'react-redux';
 
@@ -26,13 +25,3 @@ const Contacts = () => {
 
 export default Contacts;
 
-Contacts.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  ),
-  onRemoveContact: PropTypes.func,
-};
