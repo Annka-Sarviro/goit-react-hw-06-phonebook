@@ -13,6 +13,7 @@ const Filter = () => {
       <Input
         type="text"
         onChange={e => dispatch(filterName(e.currentTarget.value))}
+        
       />
     </Label>
   );
